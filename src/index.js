@@ -20,6 +20,7 @@ const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'TOGGLE':
       // copy & return previous state w/ updated checked state 
+      // please note the use of the spread syntax
       return { ...state, checked: !state.checked };
   }
   // please note that the reducer must take in current `state` & `action`
