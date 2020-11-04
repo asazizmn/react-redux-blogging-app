@@ -22,6 +22,9 @@ const reducer = (state = defaultState, action) => {
       // copy & return previous state w/ updated checked state 
       // please note the use of the spread syntax
       return { ...state, checked: !state.checked };
+
+    // this is required by some ESLinters to suppress warning
+    default:
   }
   // please note that the reducer must take in current `state` & `action`
   // and return the updated state
