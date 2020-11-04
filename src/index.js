@@ -35,6 +35,27 @@ const store = createStore(reducer);
  * Main React Component
  */
 class App extends React.Component {
+
+  // ensure state is initialised before use
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  // react lifecycle method that is called twice
+  // ... after the initial render when data has been received
+  // ... before displaying the data in the browser
+  // deprecated since react 17, use constructor instead
+  componentWillMount() {
+
+    // subscribe to the redux store state
+    // ... and execute provided callback everytime store state changes
+    // ... in this case, the callback simply updates the state!?
+    store.subscribe(() => this.setState(store.getState()));
+  }
+
+
+  // react executes `render` everytime the component's state changes
   render() {
     return (
       <h1>Hello, World!</h1>
