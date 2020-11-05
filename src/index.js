@@ -77,18 +77,12 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>To-dos</h1>
+        <h1>Todos</h1>
         <div>
-          Learn Redux&nbsp;
-        <input
-            type="checkbox"
-            checked={!!this.state.checked}
-            onClick={onClick}
-          />
+          <input type="checkbox" checked={!!this.state.checked} onClick={onClick} />
+          &nbsp; Learn Redux
         </div>
-        {
-          this.state.checked ? (<h2>Done!</h2>) : null
-        }
+        {this.state.checked ? (<h2>Done!</h2>) : null}
       </div>
     );
   }
