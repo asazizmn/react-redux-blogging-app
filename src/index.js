@@ -72,14 +72,23 @@ class App extends React.Component {
 
   // react executes `render` everytime the react component's state changes
   render() {
+
+    const onClick = () => store.dispatch({ type: 'TOGGLE' });
+
     return (
       <div>
-        <h1>Todos</h1>
+        <h1>To-dos</h1>
         <div>
-          &nbsp;<input type="checkbox" checked={!!this.state.checked} />&nbsp;
-          Learn Redux
+          Learn Redux&nbsp;
+        <input
+            type="checkbox"
+            checked={!!this.state.checked}
+            onClick={onClick}
+          />
         </div>
-        {this.state.checked ? (<h2>Done!</h2>) : null}
+        {
+          this.state.checked ? (<h2>Done!</h2>) : null
+        }
       </div>
     );
   }
