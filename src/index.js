@@ -25,6 +25,7 @@ const reducer = (state = defaultState, action) => {
 
     // this is required by some ESLinters to suppress warning
     default:
+      return state;
   }
   // please note that the reducer must take in current `state` & `action`
   // and return the updated state
@@ -51,9 +52,10 @@ class App extends React.Component {
   // deprecated since react 17, use constructor instead
   componentWillMount() {
 
-    // subscribe to the redux store state
-    // ... and execute provided callback everytime store state changes
-    // ... in this case, the callback simply updates the state!?
+    // subscribe to the redux store state,
+    // ... to listen for any changes to the store
+    // ... and execute the provided callback everytime it changes
+    // here, we get the new redux store state and update the react state with it
     store.subscribe(() => this.setState(store.getState()));
   }
 
