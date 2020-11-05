@@ -18,18 +18,18 @@ import { createStore } from 'redux';
 const defaultState = { checked: false };
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
+
+    // copy & return previous state w/ updated checked state 
+    // please note the use of the spread syntax
     case 'TOGGLE':
-      // copy & return previous state w/ updated checked state 
-      // please note the use of the spread syntax
       return { ...state, checked: !state.checked };
 
-    // this is required by some ESLinters to suppress warning
+    // please note that the reducer function
+    // ... must take in current `state` & `action` as parameters
+    // ... and return the updated state
     default:
       return state;
   }
-  // please note that the reducer must take in current `state` & `action`
-  // and return the updated state
-  return state;
 };
 const store = createStore(reducer);
 
