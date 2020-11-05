@@ -49,6 +49,10 @@ class App extends React.Component {
   // react lifecycle method that is called twice
   // ... after the initial render when data has been received
   // ... before displaying the data in the browser
+  // one of the "gotchas" of using this is that
+  // ... due to the asynchronous nature of react
+  // ... the component does NOT wait for this to execute before rendering
+  // ... therefore it will only render properly on second render
   // deprecated since react 17, use constructor instead
   componentWillMount() {
 
@@ -57,13 +61,26 @@ class App extends React.Component {
     // ... and execute the provided callback everytime it changes
     // here, we get the new redux store state and update the react state with it
     store.subscribe(() => this.setState(store.getState()));
+
+    // however, it should be noted that the event listener
+    // ... will only execute the callback when `dispatch` happens
+    // ... therefore, without it even the initial state creation won't happen
+    // within the render function below, it is only showing react's state
+    // ... which is still "false", as it hasn't taken from the redux store yet
   }
 
 
-  // react executes `render` everytime the component's state changes
+  // react executes `render` everytime the react component's state changes
   render() {
     return (
-      <h1>Hello, World!</h1>
+      <div>
+        <h1>Todos</h1>
+        <div>
+          &nbsp;<input type="checkbox" checked={!!this.state.checked} />&nbsp;
+          Learn Redux
+        </div>
+        {this.state.checked ? (<h2>Done!</h2>) : null}
+      </div>
     );
   }
 }
