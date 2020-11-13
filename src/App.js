@@ -14,6 +14,8 @@ import { connect } from 'react-redux';
  * is used to access specific states from the store
  */
 const mapStateToProps = state => ({
+  
+  // in this case we are spefically accessing the `appName` state
   appName: state.appName
 });
 

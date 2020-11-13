@@ -18,7 +18,7 @@ import App from './App';
 
 // Redux State
 const defaultState = {
-  appName: 'conduit',
+  appName: 'React Redux based blogging App',
   articles: null
 };
 
@@ -34,7 +34,11 @@ const store = createStore(reducer);
 
 // render main component and insert code in html
 // pls nt that the `Provider` component is how to tell `react-redux` about your store
+// specifically, `Provider` makes the Redux store available to the connect() calls
+// ... in the component hierarchy contained within.
 ReactDOM.render((
+
+
   <Provider store={store}>
     <App />
   </Provider>
