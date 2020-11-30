@@ -18,7 +18,7 @@ import App from './App';
 
 // Redux State
 const defaultState = {
-  appName: 'React Redux based blogging App',
+  appName: 'RR Blogging App',
   articles: null
 };
 
@@ -37,8 +37,6 @@ const store = createStore(reducer);
 // specifically, `Provider` makes the Redux store available to the connect() calls
 // ... in the component hierarchy contained within.
 ReactDOM.render((
-
-
   <Provider store={store}>
     <App />
   </Provider>
